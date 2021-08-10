@@ -58,4 +58,4 @@ else:
 #Queremos recibir datos por consola
 print("Hola mucho como te llamas ?")
 nombre = input()
-print(f"Mucho en conocerte, {nombre}")
+print("Mucho en conocerte", nombre)
