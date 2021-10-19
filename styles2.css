@@ -1,0 +1,569 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: white;
+  margin: 0;
+  padding: 0;
+
+}
+
+.navbar {
+  background-color: aliceblue;
+  flex-wrap: wrap;
+}
+.container {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  grid-template-rows: 70px;
+}
+
+.menu {
+  display: flex;
+  /* background-color: red; */
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  flex: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu ol {
+  display: flex;
+  flex: auto;
+  justify-content: flex-end;
+  align-items: center;
+  /*la propiedad flex-wrap no deja que el contenedor se desborde pasa a una nueva linea */
+  flex-wrap: wrap;
+}
+
+.menu ol li {
+  list-style: none;
+}
+.menu ol li a {
+  text-decoration: none;
+  padding: 1rem;
+  color: #1b2127;
+}
+.menu li a:active {
+  color: #0e6ac7;
+}
+
+.card-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 360px;
+  /* background-color: red; */
+  flex-wrap: wrap;
+}
+
+.container-image {
+  display: flex;
+  flex: auto;
+  justify-items: center;
+  align-items: center;
+  /* background-color: yellow; */
+  height: 360px;
+  /* background-image: url("./boson-higgs.png"); */
+}
+
+.card-image {
+  height: 360px;
+  width: 100%;
+  /* con la propiedad object-fit puedo adaptar la imagen */
+  object-fit: cover;
+  padding: 1.3rem;
+  border-radius: 30px;
+}
+
+.container-text {
+  display: flex;
+  flex: auto;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 1.5rem;
+}
+
+.text-image {
+  font-size: 1.5rem;
+  text-align: justify;
+}
+
+/* Clase nombre columnas */
+
+.container-class4 {
+  display: grid;
+  grid-template-columns: [linea1] 1fr [linea2] 1fr [linea3] 1fr [linea4] 1fr [linea5] 1fr [linea6] 1fr [linea7] 1fr [linea8];
+  grid-template-rows: [fila-inicio1]300px [fila-inicio2]300px [fila-fin ];
+  column-gap: 5px;
+  row-gap: 5px;
+  /* height: 500px; */
+  background-color: #0e6ac7;
+  margin-bottom: 5px;
+  /*Con justigy-item y aling-item, puedo controlar la alineacion de los contenedores */
+  /* justify-items: center;
+    align-items: center; */
+}
+
+.item {
+  border: 1px solid red;
+  height: inherit;
+}
+
+.item:nth-of-type(1) {
+  grid-column: linea1 / linea4;
+  grid-row: fila-inicio1 / fila-fin;
+}
+.item:nth-of-type(2) {
+  grid-column: linea4/ linea6;
+  grid-row: fila-inicio1 / fila-fin;
+
+  /*Con self le digo al objeto dentro de la grilla que se mueva en el eje verticar y horizontal*/
+  justify-items: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.item-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: "img" "texto";
+  height: 100%;
+  justify-items: center;
+  align-items: center;
+}
+
+.item-image-container {
+  grid-area: img;
+  grid-row: 1 / span 1;
+  height: 100%;
+  width: 100%;
+  padding: 1.5rem;
+  background-color: red;
+}
+
+.image-card-item {
+  height: inherit;
+  width: inherit;
+  object-fit: cover;
+}
+
+.text-image-container {
+  grid-area: img;
+  grid-row: 2/ -1;
+  background-color: green;
+  /* height: 100%;
+    width: 100%; */
+  /* word-wrap: break-word; */
+  /* padding: 1.5rem; */
+}
+
+.text-card-item {
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+.item:nth-of-type(3) {
+  grid-column: linea6/ linea8;
+  grid-row: fila-inicio1 / fila-fin;
+}
+.item:nth-of-type(4) {
+  grid-column: linea6/ linea7;
+  grid-row: fila-inicio2 / fila-fin;
+  height: inherit;
+}
+.item:nth-of-type(5) {
+  grid-column: linea7/ linea8;
+  grid-row: fila-inicio2 / fila-fin;
+  height: inherit;
+}
+
+/*Clase layout instagram */
+.post {
+  /* Activa el cursor en la etiqueta a */
+  cursor: pointer;
+  position: relative;
+  /* Por defecto un ancla viene sin display: ; */
+  display: block;
+  /* width: 300px; */
+  /* margin-bottom: 10px; */
+}
+
+.post-image {
+  margin: 0;
+  height: 100%;
+}
+
+.post-image img {
+  width: 100%;
+  /* margen abajo de las imagenes */
+  vertical-align: top;
+}
+
+.post-overlay {
+  /* red green blue alfa => transparencia */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Se ajusta al elemento con posicion relativa mas cercano */
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.post:active .post-overlay {
+  display: flex;
+}
+
+.post-likes,
+.post-comments {
+  width: 80px;
+  margin: 5px;
+  font-weight: bold;
+  text-align: center;
+  /* inline-block le permitimos al elemento tener padding y marghin */
+  display: inline-block;
+}
+
+.post-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(100px, 293px));
+  justify-content: center;
+  gap: 28px;
+  height: max-content;
+  
+}
+
+.pinterest {
+  display: grid;
+  /* auto-fill me haga un auto relleno */
+  grid-template-columns: repeat(auto-fill, 250px);
+  gap: 5px;
+  justify-content: center;
+}
+.item-pinterest {
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #f2f2f2;
+}
+
+.img-post {
+  max-width: 100%;
+}
+
+.nivel1 {
+  /* para manejar el lugar donde comienze de la grilla esta start y end entonces si queremos un inicio dinamico osea que inicie donde este pero queremos controlar cuantas filas ocupa usamos solo end */
+  /* para decirle cuantas filas ocupe */
+  grid-row-end: span 3;
+}
+.nivel2 {
+  grid-row-end: span 2;
+}
+.nivel3 {
+  grid-row-end: span 1;
+}
+
+/* Countownd card */
+
+.publicidad {
+  background-color: #23475b;
+  color: white;
+  padding: 32px 15px;
+  display: grid;
+  grid-template-columns: minmax(auto, 1024px);
+  justify-content: center;
+}
+
+.publicidad-container {
+  display: grid;
+  grid-template-columns: 70px 1fr 320px;
+  /* grid-template-rows: repeat(3, 1fr); */
+  grid-template-areas:
+    "logo titulo form"
+    ". descripcion form"
+    ". countdown form";
+  gap: 10px;
+}
+
+.badge {
+  grid-area: logo;
+}
+
+.badge img {
+  max-width: 70px;
+}
+
+.title-publicidad {
+  grid-area: titulo;
+  font-family: "Explora", cursive;
+  font-size: 3em;
+  font-weight: normal;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.form-publicidad {
+  grid-area: form;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 1.5em;
+  border-radius: 10px;
+}
+
+.form-publicidad input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1em;
+  border: 1px solid #dbdbe2;
+  border-radius: 5px;
+  /* /Para que no se salgan de la caja */
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+.form-publicidad p {
+  font-size: 1.3em;
+  color: #1b2127;
+  margin-bottom: 1em;
+}
+
+.form-publicidad button {
+  background-color: #98ca3f;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+  border-bottom: 5px solid #6d932b;
+  display: inline-block;
+}
+
+.countdown {
+  grid-area: countdown;
+}
+
+.countdown h3 {
+  font-size: 18px;
+  text-align: center;
+  font-weight: 300;
+}
+
+.description {
+  grid-area: descripcion;
+}
+
+.lista {
+  color: red;
+  font-size: 1.5rem;
+}
+
+/* cuando este en un ancho igual a 768px o menor */
+@media screen and (max-width: 768px) {
+  .post-list {
+    gap: 3px;
+  }
+  .publicidad-container {
+    grid-template-columns: 70px 1fr;
+    /* grid-template-rows: repeat(3, 1fr); */
+    grid-template-areas:
+      "logo titulo"
+      ". descripcion"
+      ". countdown"
+      "form form";
+  }
+  .lista {
+    font-size: 0.8rem;
+  }
+}
+.container-app{
+  
+  position: relative;
+  background-color: blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container-info{
+  /* Lo que hace fixed es poner un contenedor sobre puesto a lo que estemos viendo. Y se ajustara al alto de la pantalla  */
+  position: fixed;
+  
+  justify-content: center;
+  align-items: top;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.4);
+
+  display: none;
+}
+
+
+.card-info{
+    display: flex;
+
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    
+
+}
+
+.info{
+  display: grid;
+  grid-template-columns: repeat(2,350px);
+  grid-template-rows: 450px;
+}
+.close{
+  position: absolute;
+  top: 15px;
+  bottom: 0;
+  right: calc(100% - 15px);
+}
+
+/*Clase animaciones /*/
+
+.animacion {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: red;
+  /* que propiedad quiero cambiar en la transicion, este caso el ancho*/
+  transition-property: width, height;
+  /* Debo decirle cuanto tiempo dura la transicion */
+  transition-duration: 1s;
+  /* La animacion tenga un tiempo de espera mientras interactuo con el elemento */
+  transition-delay: 1s;
+  /* Para que reaccione de una mejor manera se le configura el timmiing */
+
+  /* ease: Especifica un efecto de transición con un arranque lento, luego rápido, luego finaliza lentamente (esto es predeterminado).
+linear: Especifica un efecto de transición con la misma velocidad de principio a fin.
+ease-in: Especifica un efecto de transición con un inicio lento.
+ease-out: Especifica un efecto de transición con un final lento.
+ease-in-out: Especifica un efecto de transición con un inicio y fin lentos.
+cubic-bezier(n,n,n,n): Le permite definir sus propios valores en una función. */
+  transition-timing-function: ease;
+}
+
+/* .animacion:hover {
+  width: 200px;
+  height: 200px;
+} */
+
+.canasta1{
+  position: relative;
+  height: 200px;
+  border: 1px solid red;
+  /* Trasnformaciones  */
+  /* transform: rotar | modificarContorno | cambiarPosic | cambiarTamaño (Traba en porcentajes 0 -1); */
+  transform: rotate(5deg) skew(20deg) translate(100px) scale(1.5);
+}
+
+/* debo aplicar una interaccion en el padre que pueda heredad esa trasnformacion */
+/* .canasta1:hover .animacion1{
+  width: 200px;
+  height: 200px;
+} */
+.canasta1:hover .animacion1.a{
+  /* left: 200px; */
+  /* left: 50 % */
+  /* calc lo que queremos que se mueva, em este caso quiero que sea el 50% y para compenzar el ancho de la pelota se lo resto */
+  left: calc(50% - 100px);
+} 
+ .canasta1:hover .animacion1.b{
+  /* right: 200px; */
+  right: calc(50% - 100px);
+}
+
+
+/*Mover en posiciones */
+
+.animacion1 {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  position: absolute;
+  /* transition-property: width, height; */
+  transition-duration: 1s;
+  transition-timing-function: ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.animacion1.a {
+   background: red;
+  left: 0;
+}
+.animacion1.b {
+  background: blue;
+  right: 0;
+}
+
+
+/*Transformacion de rotacion */
+.rotacion{
+  border: 1px solid red;
+}
+.rotacion:hover .cuadrado{
+  transform: rotateY(-90deg);
+  /* background-image: url('./img2.jpg'); */
+  transition-duration: 1s;
+  background-image: url('./img1.jpg');
+  /* rotate mueve el contenido segun los grados */
+  /* transform: rotateY(-90deg); */
+  /* transform: rotate3d(1,1,1,180deg); */
+}
+.cuadrado{
+  height: 200px;
+  width: 200px;
+  margin: 20px;
+  background-image: url('./img1.jpg');
+  background-size: cover;
+
+}
+
+.cambioColor {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  animation-name: example;
+  animation-duration: 4s;
+}
+
+@keyframes example {
+  from {background-color: red;}
+  to {background-color: yellow;}
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid blue;
+  border-right: 16px solid green;
+  border-bottom: 16px solid red;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
